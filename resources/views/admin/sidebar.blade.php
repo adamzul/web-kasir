@@ -4,16 +4,7 @@
             Sidebar
         </div>
 
-        <div class="card-body">
-            <ul class="nav" role="tablist">
-                <li role="presentation">
-                    <a href="{{ url('/admin') }}">
-                        Dashboard
-                    </a>
-                </li>
-            </ul>
-        </div>
-
+        
         <div class="card-body">
             <ul class="nav" role="tablist">
                 <li role="presentation">
@@ -37,7 +28,7 @@
         <div class="card-body">
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/pesanan/'.Auth::user()->id) }}">
+                    <a href="{{ url('pesanan/pesanan-dari-anda/'.Auth::user()->id) }}">
                         Pesanan dari anda 
                     </a>
                 </li>

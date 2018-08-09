@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 use App\Pesanan;
 use Illuminate\Http\Request;
@@ -51,19 +52,18 @@ class PesananController extends Controller
         $number = 1;
         $lastRecord = Pesanan::all()->last();
         if($lastRecord != null){
-            $numberLastRecordId = explode('-', $lastRecord->id_pesanan);
-            // var_dump($lastRecord->id_pesanan);
+            $numberLastRecordId = explode('-', $lastRecord->id);
+            // return var_dump($numberLastRecordId);
             $number = $numberLastRecordId[1] + 1;
         }
         // sprintf('%03d', $number);
         $number = str_pad($number, 3, '0', STR_PAD_LEFT);
-        var_dump($number);
-        $request->id_user = 1;
+        // return var_dump(Auth::user()->id);
         $requestData = $request->all();
         // var_dump(date('dmY'));
         // return ;
         $requestData['id'] = "ERP".date('dmY').'-'.$number;
-        $requestData['id_user'] = 1;
+        $requestData['id_user'] = Auth::user()->id;
         $requestData['status'] = 'aktif';
         Pesanan::create($requestData);
 

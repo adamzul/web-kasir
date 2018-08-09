@@ -13,7 +13,7 @@
 												<br />
 												<br />
 												<a href="#" class="btn btn-success btn-sm" id="tambah" onclick="tambah()" title="Add New detailPesanan">
-														<i class="fa fa-plus" aria-hidden="true"></i> Add New
+														<i class="fa fa-plus" aria-hidden="true"></i> tambah item
 												</a>
 
 												@if ($errors->any())
@@ -23,11 +23,12 @@
 																@endforeach
 														</ul>
 												@endif
-
+												<br>
+												<br>
 												<form method="POST" action="{{ url('/detail-pesanan/'.$id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" id="formBody">
 														{{ csrf_field() }}
 														<div class="form-group">
-															<input class="btn btn-primary" type="submit" value="Create">
+															<input class="btn btn-primary" type="submit" value="Simpan">
 													</div>
 												</form>
 

@@ -11,17 +11,24 @@
 |
 */
 
+// Route::get('/', function () {
+//     return redirect('makanan-minuman');
+// });
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::redirect('/', 'makanan-minuman', 301);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return redirect('makanan-minuman');
+})->name('home');
 
 Route::resource('makanan-minuman', 'MakananMinumanController')->middleware('auth');
 Route::get('pesanan/bayar/{id}', 'PesananController@bayar')->middleware('auth', 'kasir');
-Route::get('pesanan/{id}', 'PesananController@pesananDariAnda')->middleware('auth', 'pelayan');
+Route::get('pesanan/pesanan-dari-anda/{id}', 'PesananController@pesananDariAnda')->middleware('auth', 'pelayan');
+// Route::get('pesanan/create', 'PesananController@creddsdsate');
 Route::resource('pesanan', 'PesananController')->middleware('auth');
 Route::get('detail-pesanan/{id}', 'DetailPesananController@index')->name('detail_pesanan_index')->middleware('auth');
 Route::get('detail-pesanan/create/{id}', 'DetailPesananController@create')->middleware('auth');

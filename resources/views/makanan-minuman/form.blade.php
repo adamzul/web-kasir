@@ -10,7 +10,11 @@
 </div>
 <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
     <label for="status" class="control-label">{{ 'Status' }}</label>
-    <input class="form-control" name="status" type="text" id="status" value="{{ $makananminuman->status or ''}}" >
+    <select class="form-control" name="status" type="text" id="status" value="{{ $makananminuman->status or ''}}">
+        <option value="ready">ready</option>
+        <option value="not ready">not ready</option>
+        
+    </select>
     {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
 </div>
 
